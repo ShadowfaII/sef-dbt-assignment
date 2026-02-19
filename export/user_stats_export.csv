@@ -1,0 +1,11 @@
+user_id,city,total_orders,completed_orders,refunded_orders,lifetime_value,last_order_date
+102,Mumbai,2,1,1,400,2024-01-03
+108,Bangalore,2,2,0,1700,2024-01-09
+109,Delhi,2,1,1,450,2024-01-10
+110,Mumbai,2,2,0,1150,2024-01-10
+105,Mumbai,2,2,0,350,2024-01-08
+107,Chennai,2,1,1,400,2024-01-09
+101,Delhi,3,3,0,1500,2024-01-07
+103,Delhi,2,2,0,420,2024-01-07
+104,Bangalore,1,1,0,150,2024-01-03
+106,Delhi,2,2,0,1300,2024-01-08

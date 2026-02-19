@@ -2,5 +2,5 @@ sef_project:
   outputs:
     dev:
       type: duckdb
-      path: sef_database.duckdb  # This will create a local database file right here
+      path: dev.duckdb  # This will create a local database file right here
   target: dev
