@@ -16,3 +16,4 @@ select
     max(order_date) as last_order_date
 from orders
 group by 1, 2
+order by user_id asc
