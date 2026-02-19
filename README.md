@@ -55,23 +55,23 @@ To replicate this environment and run the pipeline locally:
     ```
 
 
-## ** Transformations Applied & Why **
+## 🛠 Transformations Applied & Why
 
-I followed a Medallion Architecture (Staging -> Marts) to ensure the code is modular and maintainable.
+I followed a **Medallion Architecture** (Staging -> Marts) to ensure the code is modular, readable, and maintainable.
 
-A. Staging Layer (stg_)
-    Goal: Clean and cast raw data.
-    Logic: Renamed columns for consistency and cast string dates into DATE formats. This ensures that downstream models don't have to worry about data types.
+### **A. Staging Layer (`stg_`)**
+* **Goal:** Clean and cast raw data.
+* **Logic:** I renamed columns for consistency and cast string dates into `DATE` formats. This ensures that downstream models don't encounter data-type errors.
 
-B. Core Logic (fct_orders)
-    Goal: Create a "One Big Table" for orders.
-    Logic: Joined orders, users, and payments on order_id and user_id. This centralizes all order details, including geography (city) and payment status, into a single source of truth.
+### **B. Core Logic (`fct_orders`)**
+* **Goal:** Create a "One Big Table" (OBT) for orders.
+* **Logic:** I joined `orders`, `users`, and `payments` on `order_id` and `user_id`. This centralizes all details—including city geography and payment status—into a single source of truth for all reporting.
 
-C. Analytics Marts (mart_)
-    Goal: Deliver business-ready reporting.
-    Transformations: * City Revenue Mart: Used UNION ALL logic to create a formatted financial report.
-        Bifurcation: I separated "Completed" vs. "Refunded" orders to show actual Revenue vs. Lost Revenue.
-        Grand Totals: Added a calculated 5th row specifically for "GRAND TOTAL" and "LOST REVENUE" to make the export ready for stakeholders.
+### **C. Analytics Marts (`mart_`)**
+* **Goal:** Deliver business-ready reporting.
+* **The "City Revenue" Logic:** * Used `UNION ALL` to create a formatted financial report.
+    * **Bifurcation:** I separated "Completed" vs. "Refunded" orders to show actual Revenue vs. Lost Revenue.
+    * **Grand Totals:** I added a calculated row for **"GRAND TOTAL"** to provide an "executive-ready" summary directly in the data output.
 
 
 ## **Key Assumptions**
