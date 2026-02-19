@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "A fact table that joins orders with user and payment details to provide a comprehensive view of all transactions."
+    columns:
+      - name: order_id
+        decription: "The unique identifier for an order."
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: "The unique identifier for the user who placed the order."
+        tests:
+          - not_null
+      - name: amount
+        description: "The total amount of the order."
+      - name: order_status
+        description: "The current status of the order (e.g., completed refund)."
