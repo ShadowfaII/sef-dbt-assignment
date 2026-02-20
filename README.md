@@ -85,6 +85,33 @@ I followed a **Medallion Architecture** (Staging -> Marts) to ensure the code is
 * Data Integrity: I assumed order_id is the unique primary key for the entire pipeline, as validated by my dbt tests.
 
 
+## 🧩 Challenges & Learnings
+
+* **Complex SQL Logic in dbt:** The biggest challenge was implementing the "Grand Total" and "Lost Revenue" rows within the `mart_city_revenue` model. Ensuring that the `UNION ALL` matched the data types and column order exactly required careful CTE management.
+
+* **dbt Configuration:** Handling the `+` prefix deprecation in `dbt_project.yml` was a great learning point regarding versioning and keeping up with dbt best practices.
+
+* **DuckDB Integration:** Learning how to interact with a local `dev.duckdb` via the CLI for manual exports was a new but highly efficient workflow.
+
+
+## 📈 Future Improvements (Given More Time)
+
+* **Robust Data Testing:** I would implement more advanced tests (like `dbt_expectations`) to validate that revenue never goes negative and that city names are formatted correctly.
+
+* **CI/CD Pipeline:** I would set up a GitHub Action to automatically run `dbt test` every time code is pushed to ensure no breaking changes reach the repository.
+
+* **Visualization:** I would connect this DuckDB instance to a BI tool like Evidence or Streamlit to create a live dashboard for the stakeholders.
+
+
+## ⏱️ Approximate Time Spent
+* **Total Time:** ~7–9 hours
+* **Breakdown:** 
+    * 2 hours: Environment setup and dbt initialization.
+    * 4 hours: Developing staging and mart models.
+    * 2 hours: Logic refinement for financial reporting and grand totals.
+    * 1 hour: Documentation, testing, and GitHub finalization.
+
+
 Author: Kartik Kamra
 
 Tools: dbt-core, DuckDB, Python, SQL
